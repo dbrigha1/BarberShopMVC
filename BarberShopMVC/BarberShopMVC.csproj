@@ -225,6 +225,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Wrappers\HttpClientWrapper.cs" />
+    <Compile Include="Controllers\Wrappers\IHttpClientWrapper.cs" />
+    <Compile Include="Controllers\PicturesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WebApi\PicturesApiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +293,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Pictures\Create.cshtml" />
+    <Content Include="Views\Pictures\Delete.cshtml" />
+    <Content Include="Views\Pictures\Details.cshtml" />
+    <Content Include="Views\Pictures\Edit.cshtml" />
+    <Content Include="Views\Pictures\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

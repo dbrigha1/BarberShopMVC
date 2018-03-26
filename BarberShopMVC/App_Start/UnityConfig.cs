@@ -1,5 +1,6 @@
 using BarberShopMVC.Api_Logic;
 using BarberShopMVC.Api_Repo;
+using BarberShopMVC.Controllers;
 using System;
 using System.Web.Http;
 using Unity;
@@ -48,6 +49,7 @@ namespace BarberShopMVC
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IPictureLogic, PictureLogic>();
             container.RegisterType<IPictureRepo, PictureRepo>();
+            container.RegisterType<IHttpClientWrapper, HttpClientWrapper>();
 
 
 
