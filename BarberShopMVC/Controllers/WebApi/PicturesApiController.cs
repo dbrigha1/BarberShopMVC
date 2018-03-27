@@ -69,18 +69,20 @@ namespace BarberShopMVC.Controllers.WebApi
             }
         }
 
-        // GET: api/PicturesApi/5
-        //[ResponseType(typeof(Picture))]
-        //public async Task<IHttpActionResult> GetPicture(int id)
-        //{
-        //    Picture picture = await db.Pictures.FindAsync(id);
-        //    if (picture == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    return Ok(picture);
-        //}
+
+        // GET: api/PicturesApi/5
+        [ResponseType(typeof(Picture))]
+        public async Task<IHttpActionResult> GetPicture(int id)
+        {
+            Picture picture = await _logic.GetPicture(id);
+            if (picture == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(picture);
+        }
 
         //// PUT: api/PicturesApi/5
         //[ResponseType(typeof(void))]
@@ -133,20 +135,12 @@ namespace BarberShopMVC.Controllers.WebApi
         //}
 
         //// DELETE: api/PicturesApi/5
-        //[ResponseType(typeof(Picture))]
-        //public async Task<IHttpActionResult> DeletePicture(int id)
-        //{
-        //    Picture picture = await db.Pictures.FindAsync(id);
-        //    if (picture == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    db.Pictures.Remove(picture);
-        //    await db.SaveChangesAsync();
-
-        //    return Ok(picture);
-        //}
+        [ResponseType(typeof(Picture))]
+        public async Task<IHttpActionResult> DeletePicture(int id)
+        {
+            await _logic.DeletePicture(id);
+            return Ok();
+        }
 
         //protected override void Dispose(bool disposing)
         //{

@@ -12,5 +12,7 @@ namespace BarberShopMVC.Api_Repo
         Task<IList<Picture>> GetPictures();
 
         Task CreatePicture(Picture model);
+        Task<Picture> GetPicture(int id);
+        Task DeletePicture(int id);
     }
 }

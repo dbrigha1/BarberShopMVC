@@ -69,20 +69,32 @@ namespace BarberShopMVC.Controllers
             return View("Error");           
         }
 
-        //// GET: Pictures/Details/5
-        //public async Task<ActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Picture picture = await db.Pictures.FindAsync(id);
-        //    if (picture == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(picture);
-        //}
+        // GET: Pictures/Details/5
+        public async Task<ActionResult> Details(int id)
+        {
+            
+            var response = await _clientWrapper.GetPicture("api/picturesapi", id);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonModel = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<Picture>(jsonModel);
+                return View(model);
+            }
+            return View("Error");
+        }
+
+        // Post: Pictures/Delete/5
+        public async Task<ActionResult> Delete(int id)
+        {            
+            var response = await _clientWrapper.Delete("api/picturesapi", id);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View("Error");
+        }
+
+       
 
         //// GET: Pictures/Create
         //public ActionResult Create()
@@ -90,7 +102,7 @@ namespace BarberShopMVC.Controllers
         //    return View();
         //}
 
-        
+
         //// GET: Pictures/Edit/5
         //public async Task<ActionResult> Edit(int? id)
         //{

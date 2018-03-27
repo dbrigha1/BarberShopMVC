@@ -34,5 +34,25 @@ namespace BarberShopMVC.Controllers
 
             return response;
         }
+
+        public async Task<HttpResponseMessage> GetPicture(string uri, int id)
+        {
+            client.BaseAddress = new Uri(BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await client.GetAsync($"{uri}/{id}");
+
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> Delete(string uri, int id)
+        {
+            client.BaseAddress = new Uri(BaseUrl);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await client.DeleteAsync($"{uri}/{id}");
+
+            return response;
+        }
     }
 }

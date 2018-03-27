@@ -29,5 +29,18 @@ namespace BarberShopMVC.Api_Repo
             var pictures = await _context.Pictures.Where(x => true).ToListAsync();
             return pictures;            
         }
+
+        public async Task<Picture> GetPicture(int id)
+        {
+            var picture =  await _context.Pictures.Where(x => x.PictureId == id).SingleOrDefaultAsync();
+            return picture;
+        }
+
+        public async Task DeletePicture(int id)
+        {
+            var model = _context.Pictures.Where(x => x.PictureId == id).SingleOrDefault();
+            _context.Pictures.Remove(model);
+            await _context.SaveChangesAsync();
+        }
     }
 }
